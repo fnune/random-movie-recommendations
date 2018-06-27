@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "baseUrl": "./app",
+    "downlevelIteration": true,
+    "jsx": "react",
+    "lib": ["esnext", "es2017", "dom"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "target": "es2016"
+  },
+  "include": ["app/**/*.ts", "app/**/*.tsx"],
+  "exclude": ["node_modules/**/*"]
+}
