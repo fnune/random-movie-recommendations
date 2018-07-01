@@ -12,7 +12,7 @@ export class MovieCard extends React.Component<Props> {
     return (
       <div>
         <h3>{this.props.movie.title}</h3>
-        <Image path={fromNullable(this.props.movie.poster_path)} />
+        <Image path={fromNullable(this.props.movie.poster_path)} size="w500" />
       </div>
     )
   }
