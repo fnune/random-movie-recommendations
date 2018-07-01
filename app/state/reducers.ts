@@ -1,2 +1,4 @@
 import { combineReducers } from 'redux'
-export default combineReducers({ main: () => null })
+import init from '~state/init/reducer'
+
+export default combineReducers({ config: init })

@@ -1,6 +1,7 @@
 type Id = number
-type Uri = string
 type IsoDate = string
+type Uri = string
+type Url = string
 
-type LanguageCode = string
 type GenreId = number
+type LanguageCode = string
