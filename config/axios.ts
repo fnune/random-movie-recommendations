@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import config from './'
+import config from './config'
 
 axios.defaults.baseURL = config.API_URL
 axios.defaults.params = config.AXIOS_DEFAULT_PARAMS
