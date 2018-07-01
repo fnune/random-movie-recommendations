@@ -1,4 +1,4 @@
-import { Option, none, some } from 'fp-ts/lib/Option'
+import { Option, fromNullable } from 'fp-ts/lib/Option'
 import * as jsc from 'jsverify'
 import moment = require('moment')
 
@@ -14,7 +14,10 @@ export function nullable<T>(gen: jsc.Arbitrary<T>): jsc.Arbitrary<T | null> {
 }
 
 export function option<T>(gen: jsc.Arbitrary<T>): jsc.Arbitrary<Option<T>> {
-  return jsc.elements([some(make(gen)), none])
+  return gen.smap(
+    item => fromNullable(make(jsc.elements([item, null]))),
+    option => option.getOrElse(make(gen)),
+  )
 }
 
 export const isoDateString = jsc.datetime.smap(
@@ -26,6 +29,14 @@ export const failureResponse: jsc.Arbitrary<FailureResponse> = jsc.record({
   status_code: jsc.integer,
   status_message: jsc.asciinestring,
 })
+
+export const meta: jsc.Arbitrary<Option<Meta>> = option(
+  jsc.record({
+    page: jsc.integer,
+    totalPages: jsc.integer,
+    totalResults: jsc.integer,
+  }),
+)
 
 export const movie: jsc.Arbitrary<Movie> = jsc.record({
   adult: jsc.bool,
@@ -53,6 +64,14 @@ export const configState: jsc.Arbitrary<ConfigState.Config> = jsc.record({
   errors: jsc.array(failureResponse),
 })
 
+export const discoverState: jsc.Arbitrary<DiscoverState.Discover> = jsc.record({
+  movies: jsc.array(movie),
+  loading: jsc.bool,
+  errors: jsc.array(failureResponse),
+  meta,
+})
+
 export const appState: jsc.Arbitrary<AppState> = jsc.record({
   config: configState,
+  discover: discoverState,
 })

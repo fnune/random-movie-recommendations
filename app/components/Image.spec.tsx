@@ -48,7 +48,7 @@ describe('Image', () => {
         const image = wrapper.find('img')
 
         expect(image.length).toBe(1)
-        expect(image.props().src).toEqual('https://bloo.com/blob.jpg')
+        expect(image.props().src).toEqual('https://bloo.com/original/blob.jpg')
       })
     })
 
@@ -64,7 +64,7 @@ describe('Image', () => {
         const image = wrapper.find('img')
 
         expect(image.length).toBe(1)
-        expect(image.props().src).toEqual('http://bloo.com/blob.jpg')
+        expect(image.props().src).toEqual('http://bloo.com/original/blob.jpg')
       })
     })
   })

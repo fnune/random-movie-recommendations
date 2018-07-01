@@ -17,11 +17,11 @@ interface OwnProps {
 
 type Props = StateProps & DispatchProps & OwnProps
 
-export const Image: React.SFC<Props> = ({ path, baseUrl, secureBaseUrl, protocol }) => {
+export const Image: React.SFC<Props> = ({ path, baseUrl, secureBaseUrl, protocol, size }) => {
   const base = protocol === 'https:' ? secureBaseUrl : baseUrl
 
   return [base, path].every(opt => opt.isSome()) ? (
-    <img src={`${base.toNullable()}${path.toNullable()}`} />
+    <img src={`${base.toNullable()}${size}/${path.toNullable()}`} />
   ) : (
     <div>Loading...</div>
   )
