@@ -2,7 +2,7 @@ import { shallow } from 'enzyme'
 import * as jsc from 'jsverify'
 import * as React from 'react'
 
-import { generators } from '../utils'
+import { generators } from '~utils'
 import MovieCard from './MovieCard'
 
 describe('MovieCard', () => {

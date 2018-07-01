@@ -9,7 +9,7 @@ export function make<T>(generator: jsc.Arbitrary<T>): T {
 export const nullGen: jsc.Arbitrary<null> = jsc.constant(null)
 
 export function nullable<T>(gen: jsc.Arbitrary<T>): jsc.Arbitrary<T | null> {
-  return jsc.oneof([nullGen, gen])
+  return jsc.elements([make(gen), null])
 }
 
 export const isoDateString = jsc.datetime.smap(

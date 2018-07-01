@@ -25,6 +25,9 @@
       "node_modules",
       "app"
     ],
+    "moduleNameMapper": {
+      "~(.*)": "<rootDir>/app/$1"
+    },
     "setupFiles": [
       "./config/jest-setup.ts"
     ],
