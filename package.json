@@ -5,12 +5,14 @@
   "license": "MIT",
   "scripts": {
     "build": "parcel build ./app/index.html",
+    "build:ci": "NODE_ENV=production yarn build --log-level=2",
     "format": "prettier --config=./.prettierrc --write './app/**/*.scss' './app/**/*.tsx' './app/**/*.ts' ./**/*.json ./*.json",
     "lint": "tslint --config ./config/tslint.json --project .",
     "lint:autofix": "tslint --config ./config/tslint.json --fix --project .",
     "lint:sass": "sass-lint --config ./config/sass.yml './app/**/*.scss' -v -q",
     "start": "parcel ./app/index.html",
-    "test": "jest --coverage --coverageReporters=lcov --watch",
+    "test": "NODE_ENV=test jest --coverage --coverageReporters=lcov --watch",
+    "test:ci": "NODE_ENV=test jest --coverage --coverageReporters=lcov",
     "typecheck": "tsc --noEmit"
   },
   "jest": {
