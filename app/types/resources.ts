@@ -27,4 +27,6 @@ declare namespace ImageSizes {
   type Poster = 'w92' | 'w154' | 'w185' | 'w342' | 'w500' | 'w780' | 'original'
   type Profile = 'w45' | 'w185' | 'h632' | 'original'
   type Still = 'w92' | 'w185' | 'w300' | 'original'
+
+  type Any = Backdrop | Logo | Poster | Profile | Still
 }

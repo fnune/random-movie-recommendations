@@ -1,3 +1,4 @@
+import { Option, none, some } from 'fp-ts/lib/Option'
 import * as jsc from 'jsverify'
 import moment = require('moment')
 
@@ -10,6 +11,10 @@ export const nullGen: jsc.Arbitrary<null> = jsc.constant(null)
 
 export function nullable<T>(gen: jsc.Arbitrary<T>): jsc.Arbitrary<T | null> {
   return jsc.elements([make(gen), null])
+}
+
+export function option<T>(gen: jsc.Arbitrary<T>): jsc.Arbitrary<Option<T>> {
+  return jsc.elements([some(make(gen)), none])
 }
 
 export const isoDateString = jsc.datetime.smap(
@@ -41,8 +46,8 @@ export const movie: jsc.Arbitrary<Movie> = jsc.record({
 
 export const configState: jsc.Arbitrary<ConfigState.Config> = jsc.record({
   images: jsc.record({
-    baseUrl: nullable(jsc.asciinestring),
-    secureBaseUrl: nullable(jsc.asciinestring),
+    baseUrl: option(jsc.asciinestring),
+    secureBaseUrl: option(jsc.asciinestring),
   }),
   loading: jsc.bool,
   errors: jsc.array(failureResponse),
