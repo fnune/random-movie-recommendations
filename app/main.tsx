@@ -6,13 +6,13 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 
 /** Config imports */
-import '../config/axios'
+import '~../config/axios'
 
 /** Global styling imports */
-import './style/typography.scss'
+import '~style/typography.scss'
 
-import App from './App'
-import store from './state/store'
+import App from '~App'
+import store from '~state/store'
 
 render(
   <Provider store={store}>

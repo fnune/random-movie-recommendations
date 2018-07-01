@@ -1,18 +1,25 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~*": ["./app/*"]
+    },
     "allowJs": false,
-    "baseUrl": "./app",
+    "alwaysStrict": true,
     "downlevelIteration": true,
     "jsx": "react",
     "lib": ["esnext", "es2017", "dom"],
     "module": "commonjs",
     "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
+    "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "sourceMap": true,
+    "strict": true,
     "strictNullChecks": true,
-    "target": "es2015"
+    "target": "es2016"
   },
   "include": ["app/**/*.ts", "app/**/*.tsx"],
   "exclude": ["node_modules/**/*"]
