@@ -1,16 +1,20 @@
-interface AppState {
-  config: ConfigState.Config
-}
+import { Option } from 'fp-ts/lib/Option'
 
-declare namespace ConfigState {
-  interface Images {
-    baseUrl: string | null
-    secureBaseUrl: string | null
+declare global {
+  interface AppState {
+    config: ConfigState.Config
   }
 
-  interface Config {
-    images: Images
-    loading: boolean
-    errors: FailureResponse[]
+  namespace ConfigState {
+    interface Images {
+      baseUrl: Option<Uri>
+      secureBaseUrl: Option<Uri>
+    }
+
+    interface Config {
+      images: Images
+      loading: boolean
+      errors: FailureResponse[]
+    }
   }
 }

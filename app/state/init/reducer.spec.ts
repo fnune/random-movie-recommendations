@@ -1,3 +1,4 @@
+import { some } from 'fp-ts/lib/Option'
 import { generators } from '~utils'
 import actions from './actions'
 import reducer, { initialState } from './reducer'
@@ -34,8 +35,8 @@ describe('the init reducer', () => {
     expect(state.loading).toBe(false)
     expect(state.errors).toEqual([])
     expect(state.images).toEqual({
-      baseUrl: result.images.base_url,
-      secureBaseUrl: result.images.secure_base_url,
+      baseUrl: some(result.images.base_url),
+      secureBaseUrl: some(result.images.secure_base_url),
     })
   })
 

@@ -1,10 +1,11 @@
+import { none, some } from 'fp-ts/lib/Option'
 import { AnyAction, isType } from 'typescript-fsa'
 import actions from './actions'
 
 export const initialState = {
   images: {
-    baseUrl: null,
-    secureBaseUrl: null,
+    baseUrl: none,
+    secureBaseUrl: none,
   },
   errors: [],
   loading: false,
@@ -26,8 +27,8 @@ export default function init(
     return {
       ...state,
       images: {
-        baseUrl: action.payload.result.images.base_url,
-        secureBaseUrl: action.payload.result.images.secure_base_url,
+        baseUrl: some(action.payload.result.images.base_url),
+        secureBaseUrl: some(action.payload.result.images.secure_base_url),
       },
       errors: [],
       loading: false,
