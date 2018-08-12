@@ -29,7 +29,9 @@ export const Image: React.SFC<Props> = ({ path, baseUrl, secureBaseUrl, protocol
 
 Image.defaultProps = { size: 'original', protocol: location.protocol }
 
-export default connect<StateProps, DispatchProps, OwnProps, AppState>(state => ({
+export const mapStateToProps = (state: AppState) => ({
   baseUrl: state.config.images.baseUrl,
   secureBaseUrl: state.config.images.secureBaseUrl,
-}))(Image)
+})
+
+export default connect<StateProps, DispatchProps, OwnProps, AppState>(mapStateToProps)(Image)

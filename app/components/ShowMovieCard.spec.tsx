@@ -5,7 +5,7 @@ import * as React from 'react'
 import { none, some } from 'fp-ts/lib/Option'
 import MovieCard from '~components/MovieCard'
 import { generators } from '~utils'
-import { ShowMovieCard } from './ShowMovieCard'
+import { ShowMovieCard, mapStateToProps } from './ShowMovieCard'
 
 const propsG = jsc.record({
   movies: jsc.array(generators.movie),
@@ -15,6 +15,16 @@ const stateG = jsc.record({
   current: generators.option(generators.movie),
   index: jsc.integer,
   next: generators.option(generators.movie),
+})
+
+describe('mapStateToProps', () => {
+  it('surfaces movies from state', () => {
+    jsc.assertForall(generators.appState, appState => {
+      expect(mapStateToProps(appState).movies).toEqual(appState.discover.movies)
+
+      return true
+    })
+  })
 })
 
 describe('ShowMovieCard', () => {

@@ -48,6 +48,8 @@ export class ShowMovieCard extends React.Component<Props, State> {
   }
 }
 
-export default connect<StateProps, DispatchProps, OwnProps, AppState>(state => ({
-  movies: state.discover.movies,
-}))(ShowMovieCard)
+export const mapStateToProps = (state: AppState) => ({ movies: state.discover.movies })
+
+export default connect<StateProps, DispatchProps, OwnProps, AppState>(mapStateToProps)(
+  ShowMovieCard,
+)

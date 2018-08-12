@@ -1,14 +1,27 @@
 import { shallow } from 'enzyme'
+import * as jsc from 'jsverify'
 import * as React from 'react'
 
 import { none, some } from 'fp-ts/lib/Option'
-import { Image } from './Image'
+import { generators } from '~utils'
+import { Image, mapStateToProps } from './Image'
 
 describe('Image', () => {
   const wrapper = shallow(<Image baseUrl={none} secureBaseUrl={none} path={none} />)
 
   it('renders', () => {
     expect(wrapper.length).toBe(1)
+  })
+
+  describe('mapStateToProps', () => {
+    it('surfaces baseUrl and secureBaseUrl', () => {
+      jsc.assertForall(generators.appState, appState => {
+        expect(mapStateToProps(appState).baseUrl).toBeDefined()
+        expect(mapStateToProps(appState).secureBaseUrl).toBeDefined()
+
+        return true
+      })
+    })
   })
 
   describe('if missing the path', () => {
