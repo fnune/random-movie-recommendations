@@ -14,7 +14,7 @@
     "jsx-no-lambda": { "severity": "warning" },
     "jsx-no-multiline-js": false,
     "jsx-no-string-ref": true,
-    "jsx-use-translation-function": { "severity": "warning" },
+    "jsx-use-translation-function": false,
     "member-access": false,
     "no-boolean-literal-compare": false,
     "no-namespace": [true, "allow-declarations"],
